@@ -1,0 +1,44 @@
+<div class="parent">
+  @for (pokemon of pokemons$ | async; track pokemon) {
+  <mat-card class="pokemon-card">
+    <div class="pokemon-badge" [ngClass]="getBadgeClass(pokemon.status)">
+      <span>{{ pokemon.status }}</span>
+    </div>
+    <img
+      [src]="pokemon.image"
+      height="245px"
+      alt="{{ pokemon.name.french }}"
+      class="pokemon-image"
+    />
+
+    <mat-card-content class="pokemon-content">
+      <div class="pokemon-details">
+        <button
+          mat-button
+          class="pokemon-details-button"
+          [routerLink]="['/pokemons/detail', pokemon.pokedexId]"
+        >
+          <p class="pokemon-name">{{ pokemon.name.french }}</p>
+          <p class="pokemon-description">{{ pokemon.description }}</p>
+        </button>
+
+        <button
+          mat-icon-button
+          color="accent"
+          [routerLink]="['/pokemons/edit', pokemon.pokedexId]"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="onDeletePokemon(pokemon.pokedexId)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

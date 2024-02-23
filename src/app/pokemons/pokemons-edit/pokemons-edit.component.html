@@ -1,0 +1,80 @@
+<mat-card>
+  <mat-toolbar color="primary">Pokemon Details</mat-toolbar>
+  <mat-card-content>
+    <form [formGroup]="form" class="min-width">
+      <div class="row">
+        <mat-form-field class="column padding-10">
+          <mat-label>HP</mat-label>
+          <input matInput formControlName="hp" #hp type="number" />
+          @if (form.get('hp')?.invalid) {
+          <mat-error>{{ formUtils.getErrorMessage(form, "hp") }}</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="column padding-10">
+          <mat-label>ATTACK</mat-label>
+          <input matInput formControlName="attack" #hp type="number" />
+          @if (form.get('attack')?.invalid) {
+          <mat-error>{{ formUtils.getErrorMessage(form, "attack") }}</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="column padding-10">
+          <mat-label>DEFENSE</mat-label>
+          <input matInput formControlName="defense" #hp type="number" />
+          @if (form.get('defense')?.invalid) {
+          <mat-error>{{
+            formUtils.getErrorMessage(form, "defense")
+          }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="column padding-10">
+          <mat-label>SPECIAL ATTACK</mat-label>
+          <input matInput formControlName="specialAttack" #hp type="number" />
+          @if (form.get('specialAttack')?.invalid) {
+          <mat-error>{{
+            formUtils.getErrorMessage(form, "specialAttack")
+          }}</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="column padding-10">
+          <mat-label>SPECIAL DEFENSE</mat-label>
+          <input matInput formControlName="specialDefense" #hp type="number" />
+          @if (form.get('specialDefense')?.invalid) {
+          <mat-error>{{
+            formUtils.getErrorMessage(form, "specialDefense")
+          }}</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="column padding-10">
+          <mat-label>SPEED</mat-label>
+          <input matInput formControlName="speed" #hp type="number" />
+          @if (form.get('speed')?.invalid) {
+          <mat-error>{{ formUtils.getErrorMessage(form, "speed") }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions class="actions-center">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSubmit()"
+      type="submit"
+    >
+      Save
+    </button>
+    <button
+      mat-raised-button
+      (click)="onCancel()"
+      class="btn-space"
+      type="button"
+      color="warn"
+    >
+      Cancel
+    </button>
+  </mat-card-actions>
+</mat-card>
+<div class="spacer"></div>

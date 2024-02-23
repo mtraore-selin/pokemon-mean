@@ -1,0 +1,42 @@
+<div class="pokemon-detail">
+  <div class="pokemon-header">
+    <img
+      src="{{ pokemon?.sprite }}"
+      alt="{{ pokemon?.name?.french }}"
+      class="pokemon-image"
+    />
+    <h2 class="pokemon-name">{{ pokemon?.name?.french }}</h2>
+  </div>
+  <div class="pokemon-stats">
+    @for (item of pokemon?.stats | keyvalue; track $index) { @if (item.key
+    !=='_id') {
+    <div class="stat" [hidden]="item.key">
+      <span class="label">{{ item.key }}:</span>
+      <span class="value">{{ item.value }}</span>
+    </div>
+    } }
+  </div>
+  <div class="pokemon-types">
+    <h3>Types:</h3>
+    @for (type of pokemon?.types; track $index) {
+    <div class="type">
+      <img src="{{ type.image }}" alt="{{ type.name }}" />
+      <span>{{ type.name }}</span>
+    </div>
+    }
+  </div>
+  <div class="pokemon-evolutions">
+    <h3>Evolutions:</h3>
+    @for (evolution of pokemon?.evolutions; track $index) {
+    <div class="evolution">
+      <img
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{
+          evolution.pokedexId
+        }}.png"
+        alt="{{ evolution.name }}"
+      />
+      <span>{{ evolution.name }}</span>
+    </div>
+    }
+  </div>
+</div>

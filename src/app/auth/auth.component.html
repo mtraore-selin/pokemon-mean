@@ -1,0 +1,9 @@
+@if (!authService.isLoggedIn()) {
+<button mat-icon-button (click)="login()">
+  <mat-icon>perm_identity</mat-icon>
+</button>
+} @else {
+<button mat-icon-button (click)="logout()">
+  <mat-icon>perm_contact_calendar</mat-icon>
+</button>
+}

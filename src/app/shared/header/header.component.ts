@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
+import { AuthComponent } from '../../auth/auth.component';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ import { RouterLink } from '@angular/router';
     RouterLink,
     MatIconModule,
     AsyncPipe,
+    AuthComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

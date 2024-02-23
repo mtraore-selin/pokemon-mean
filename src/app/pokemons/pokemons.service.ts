@@ -2,13 +2,14 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pokemon, Base } from './pokemon';
+import { APP_SETTINGS } from '../app.settings';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonsService {
   // private baseUrl = 'https://pokebuildapi.fr/api/v1/pokemon';
-  private baseUrl = 'http://localhost:3000/api/v1/pokemon';
+  private baseUrl = inject(APP_SETTINGS).apiUrl + '/pokemon';
 
   private http = inject(HttpClient);
 

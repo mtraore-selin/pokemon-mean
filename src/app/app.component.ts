@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { CopyrightDirective } from './shared/directives/copyright.directive';
 
 @Component({
   selector: 'app-root',

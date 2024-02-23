@@ -1,5 +1,5 @@
 <div class="parent">
-  @for (pokemon of pokemons$ | async; track pokemon) {
+  @for (pokemon of pokemons$ | async ; track pokemon) {
   <mat-card class="pokemon-card">
     <div class="pokemon-badge" [ngClass]="getBadgeClass(pokemon.status)">
       <span>{{ pokemon.status }}</span>

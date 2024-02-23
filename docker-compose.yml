@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  pokemon-service:
+    build:
+      context: .
+      dockerfile: ./devops/Dockerfile
+    hostname: pokemon-service
+    container_name: pokemon-service
+    volumes:
+      - ./src:/usr/src/app/src
+    environment:
+      - MONGO_DB_URL=mongodb://root:password@mongodb_pokemon:27017/pokemon?authSource=admin
+      - NODE_ENV=development
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb_pokemon
+    restart: always
+    volumes:
+      - ./volumes/mongodbdata:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: pokemon

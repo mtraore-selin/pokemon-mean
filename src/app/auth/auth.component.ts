@@ -1,8 +1,9 @@
 import { Component, OnDestroy, inject } from '@angular/core';
-import { AuthService } from './auth.service';
-import { SharedModule } from '../shared/shared.module';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { AuthService } from './auth.service';
+import { SharedModule } from '../shared/shared.module';
 
 @Component({
   selector: 'app-auth',

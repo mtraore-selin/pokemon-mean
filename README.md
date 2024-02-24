@@ -1,11 +1,9 @@
-
 ## Prerequisites
 
 - Docker
 - Node v18+ (if running pokemon service locally)
 
 ## Docker environment
-
 
 ```bash
 # Builds, (re)creates, starts, and attaches to containers for a service in detached mode. Ommit -d if you don't want to run in detached mode.
@@ -27,3 +25,5 @@ $ npm run start:dev
 or
 $ npm run start:prod
 ```
+
+npm install @nestjs/jwt passport passport-local bcrypt

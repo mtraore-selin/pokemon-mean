@@ -4,6 +4,10 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import * as Joi from 'joi';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { AuthService } from './modules/auth/auth.service';
+import { AuthController } from './modules/auth/auth.controller';
 
 @Module({
   imports: [
@@ -26,6 +30,10 @@ import { ThrottlerModule } from '@nestjs/throttler';
     }),
     MongooseModule.forRoot(process.env.MONGO_DB_URL),
     PokemonModule,
+    UserModule,
+    AuthModule,
   ],
+  providers: [],
+  controllers: [],
 })
 export class AppModule {}

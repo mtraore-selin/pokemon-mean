@@ -23,22 +23,7 @@ export class AuthService {
     return null;
   }
 
-  async login(loginDto: LoginDto): Promise<any> {
-    const { username, password } = loginDto;
-    const user = await this.validateUser(username, password);
-
-    if (!user) {
-      throw new UnauthorizedException('Invalid credentials');
-    }
-    const payload = {
-      username: user.username,
-      role: user.roles,
-    };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
-  }
-
+  // async authenticate(authenticateDto: LoginDto): Promise<IAuthenticate> {
   async authenticate(authenticateDto: LoginDto): Promise<IAuthenticate> {
     const { username, password } = authenticateDto;
 
@@ -54,5 +39,6 @@ export class AuthService {
     });
 
     return { token, user };
+    // return token;
   }
 }

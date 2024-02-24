@@ -7,4 +7,9 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./pokemons/pokemons.routes').then((r) => r.POKEMON_ROUTES),
   },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('./users/users.routes').then((r) => r.USER_ROUTES),
+  },
 ];

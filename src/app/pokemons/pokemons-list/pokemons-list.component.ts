@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 import { PokemonsService } from '../pokemons.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Pokemon } from '../pokemon';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-pokemons-list',
@@ -26,6 +27,8 @@ import { Pokemon } from '../pokemon';
 export class PokemonsListComponent implements OnInit {
   private pokemonService = inject(PokemonsService);
   private snackBar = inject(MatSnackBar);
+
+  authService = inject(AuthService);
 
   pokemons$: Observable<any[]> = of([]);
 

@@ -22,6 +22,8 @@
           <p class="pokemon-description">{{ pokemon.description }}</p>
         </button>
 
+        @if (authService.isAdmin()) {
+
         <button
           mat-icon-button
           color="accent"
@@ -37,6 +39,7 @@
         >
           <mat-icon>delete</mat-icon>
         </button>
+        }
       </div>
     </mat-card-content>
   </mat-card>

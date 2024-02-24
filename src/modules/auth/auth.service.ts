@@ -4,6 +4,8 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UserService } from '../user/user.service';
 import { User } from '../user/schemas/user.schema';
+import { IAuthenticate } from './interfaces/user.interface';
+import { sign } from 'jsonwebtoken';
 
 @Injectable()
 export class AuthService {
@@ -24,17 +26,33 @@ export class AuthService {
   async login(loginDto: LoginDto): Promise<any> {
     const { username, password } = loginDto;
     const user = await this.validateUser(username, password);
-    console.log('user', user);
+
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }
     const payload = {
       username: user.username,
-      sub: user._id,
       role: user.roles,
     };
     return {
       access_token: this.jwtService.sign(payload),
     };
+  }
+
+  async authenticate(authenticateDto: LoginDto): Promise<IAuthenticate> {
+    const { username, password } = authenticateDto;
+
+    const userAuth = await this.validateUser(username, password);
+    if (!userAuth) throw new UnauthorizedException('Invalid credentials');
+
+    const user = {
+      username: userAuth.username,
+      role: userAuth.roles[0],
+    };
+    const token = await this.jwtService.signAsync(user, {
+      secret: process.env.JWT_SECRET,
+    });
+
+    return { token, user };
   }
 }

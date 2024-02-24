@@ -7,13 +7,15 @@ import { AuthService } from './auth.service';
 
 @Module({
   imports: [
-    PassportModule,
     UserModule,
     JwtModule.register({
-      privateKey: 'key12345', //todo
+      global: true,
+      secret: process.env.JWT_SECRET ?? 'key12345!!',
+      signOptions: { expiresIn: '1h' },
     }),
   ],
   providers: [AuthService],
+  exports: [AuthService],
   controllers: [AuthController],
 })
 export class AuthModule {}

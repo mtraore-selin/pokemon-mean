@@ -6,8 +6,6 @@ import * as Joi from 'joi';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { AuthService } from './modules/auth/auth.service';
-import { AuthController } from './modules/auth/auth.controller';
 
 @Module({
   imports: [
@@ -25,10 +23,12 @@ import { AuthController } from './modules/auth/auth.controller';
       },
     }),
     ThrottlerModule.forRoot({
-      ttl: 60,
-      limit: 10,
+      ttl: Number(process.env.TTL ?? 60),
+      limit: Number(process.env.LIMIT ?? 10),
     }),
-    MongooseModule.forRoot(process.env.MONGO_DB_URL),
+    MongooseModule.forRoot(
+      process.env.MONGO_DB_URL ?? 'mongodb://localhost:27017/pokemon',
+    ),
     PokemonModule,
     UserModule,
     AuthModule,

@@ -27,3 +27,6 @@ $ npm run start:prod
 ```
 
 npm install @nestjs/jwt passport passport-local bcrypt
+
+npm install --save @nestjs/jwt passport-jwt jsonwebtoken passport
+npm install --save-dev @types/jsonwebtoken @types/passport-jwt

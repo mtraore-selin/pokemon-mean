@@ -9,18 +9,12 @@ import { PokemonsService } from '../pokemons.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Pokemon } from '../pokemon';
 import { AuthService } from '../../auth/auth.service';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-pokemons-list',
   standalone: true,
-  imports: [
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    AsyncPipe,
-    RouterLink,
-    CommonModule,
-  ],
+  imports: [SharedModule, AsyncPipe, RouterLink, CommonModule],
   templateUrl: './pokemons-list.component.html',
   styleUrl: './pokemons-list.component.scss',
 })

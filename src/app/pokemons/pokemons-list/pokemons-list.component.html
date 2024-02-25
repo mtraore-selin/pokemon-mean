@@ -17,6 +17,7 @@
           mat-button
           class="pokemon-details-button"
           [routerLink]="['/pokemons/detail', pokemon.pokedexId]"
+          matTooltip="Detail Pokemon"
         >
           <p class="pokemon-name">{{ pokemon.name.french }}</p>
           <p class="pokemon-description">{{ pokemon.description }}</p>
@@ -28,6 +29,7 @@
           mat-icon-button
           color="accent"
           [routerLink]="['/pokemons/edit', pokemon.pokedexId]"
+          matTooltip="Edit Pokemon"
         >
           <mat-icon>edit</mat-icon>
         </button>
@@ -36,6 +38,7 @@
           mat-icon-button
           color="warn"
           (click)="onDeletePokemon(pokemon.pokedexId)"
+          matTooltip="Delete Pokemon"
         >
           <mat-icon>delete</mat-icon>
         </button>

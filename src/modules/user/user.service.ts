@@ -19,6 +19,7 @@ export class UserService {
     private userModel: Model<User>,
   ) {}
 
+  // todo: validator role enum
   async create(createUserDto: CreateUserDto): Promise<User> {
     try {
       const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
@@ -49,12 +50,16 @@ export class UserService {
     return user;
   }
 
-  async update(username: string, updateUserDto: UpdateUserDto): Promise<void> {
+  async update(id: string, updateUserDto: UpdateUserDto): Promise<void> {
+    const user = await this.userModel.findById(id).exec();
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
     if (updateUserDto.password) {
       updateUserDto.password = await bcrypt.hash(updateUserDto.password, 10);
     }
     const updatedUser = await this.userModel
-      .findOneAndUpdate({ username }, updateUserDto)
+      .findOneAndUpdate({ _id: id }, updateUserDto, { new: true })
       .exec();
 
     if (!updatedUser) throw new NotFoundException();

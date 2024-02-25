@@ -26,8 +26,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  @Roles(Role.Admin)
-  @UseGuards(AuthGuard, RoleGuard)
+  // @Roles(Role.Admin)
+  // @UseGuards(AuthGuard, RoleGuard)
   @Version('1')
   @ApiOperation({ summary: 'Write user to database.' })
   @ApiResponse({ status: 201 })
@@ -42,8 +42,8 @@ export class UserController {
   }
 
   @Get()
-  @Roles(Role.Admin)
-  @UseGuards(AuthGuard, RoleGuard)
+  // @Roles(Role.Admin)
+  // @UseGuards(AuthGuard, RoleGuard)
   @Version('1')
   @ApiResponse({ status: 200, type: [CreateUserDto] })
   @ApiOperation({ summary: 'Fetch all user from database.' })
@@ -52,8 +52,8 @@ export class UserController {
   }
 
   @Get(':username')
-  @Roles(Role.Admin)
-  @UseGuards(AuthGuard, RoleGuard)
+  // @Roles(Role.Admin)
+  // @UseGuards(AuthGuard, RoleGuard)
   @Version('1')
   @ApiOperation({ summary: 'Fetch user by username  from database.' })
   @ApiResponse({ status: 200, type: CreateUserDto })
@@ -62,9 +62,9 @@ export class UserController {
     return this.userService.findOne(username);
   }
 
-  @Patch(':username')
-  @Roles(Role.Admin)
-  @UseGuards(AuthGuard, RoleGuard)
+  @Patch(':id')
+  // @Roles(Role.Admin)
+  // @UseGuards(AuthGuard, RoleGuard)
   @Version('1')
   @ApiOperation({
     summary: 'Update base stats of user by username in database.',
@@ -72,10 +72,10 @@ export class UserController {
   @ApiResponse({ status: 200 })
   @ApiResponse({ status: 404, description: 'User not found.' })
   update(
-    @Param('username') username: string,
+    @Param('id') id: string,
     @Body(new ValidationPipe()) updateUserDto: UpdateUserDto,
   ): Promise<void> {
-    return this.userService.update(username, updateUserDto);
+    return this.userService.update(id, updateUserDto);
   }
 
   @Delete(':username')

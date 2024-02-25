@@ -95,6 +95,7 @@ export class PokemonsAddComponent {
       evolutions: this.fb.array([]),
     });
   }
+  //create init form private: todo
 
   //  For types
   get typesForms() {

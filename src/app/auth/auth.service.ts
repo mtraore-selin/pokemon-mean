@@ -40,6 +40,9 @@ export class AuthService {
   getCurrentUser(): IAuthenticate | null {
     return this.currentUser;
   }
+  getAccessToken(): string | null {
+    return this.accessToken();
+  }
   logout() {
     this.accessToken.update(() => '');
     this.currentUser = null;

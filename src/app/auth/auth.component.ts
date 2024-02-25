@@ -19,7 +19,7 @@ export class AuthComponent implements OnDestroy {
 
   login() {
     this.subscription = this.authService
-      .login({ username: 'Momo', password: 'MyPassword!' })
+      .login({ username: 'Momo', password: 'MomoTest' })
       .subscribe({
         next: () => this.onSuccess(),
         error: () => this.onError(),

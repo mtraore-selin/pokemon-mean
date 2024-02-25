@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Edit User</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input matInput placeholder="Username" formControlName="username" />
+      <mat-error *ngIf="form.controls['username'].invalid"
+        >Username is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="password" />
+      <mat-error *ngIf="form.controls['password'].invalid"
+        >Password is required</mat-error
+      >
+    </mat-form-field>
+    <!-- <mat-form-field>
+      <input matInput placeholder="Role" formControlName="roles" />
+      <mat-error *ngIf="form.controls['role'].invalid"
+        >Role is required</mat-error
+      >
+    </mat-form-field> -->
+    <mat-form-field>
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="roles">
+        <mat-option [value]="['user']">User</mat-option>
+        <mat-option [value]="['admin']">Admin</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['roles'].invalid"
+        >Role is required</mat-error
+      >
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button color="primary" (click)="onSaveClick()">Save</button>
+</div>

@@ -56,6 +56,14 @@ export class FormUtilsService {
       return 'Maxium value is ' + requiredValue;
     }
 
+    if (field?.hasError('pattern')) {
+      return 'Password must meet the specified pattern criteria.';
+    }
+
+    if (field?.hasError('passwordStrength')) {
+      return 'Password must be stronger.';
+    }
+
     return field['errors'] ? 'Error' : '';
   }
 }

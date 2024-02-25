@@ -9,3 +9,16 @@ export interface IAuthenticate {
   readonly user: User;
   readonly token: string;
 }
+
+export interface IUser {
+  username: string;
+  password: string;
+  role: string[];
+}
+export interface IUserMongo {
+  password: string;
+  roles: string[];
+  username: string;
+  __v: number;
+  _id: string;
+}

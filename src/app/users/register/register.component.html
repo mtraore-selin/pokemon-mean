@@ -1,1 +1,24 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+  <mat-form-field appearance="fill" class="padding-10">
+    <mat-label>Username</mat-label>
+    <input
+      matInput
+      formControlName="username"
+      placeholder="Enter your username"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="padding-10">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      type="password"
+      formControlName="password"
+      placeholder="Enter your password"
+    />
+  </mat-form-field>
+  <button mat-raised-button color="primary padding-10" type="submit">
+    Register
+  </button>
+</form>

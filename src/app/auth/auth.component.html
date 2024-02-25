@@ -1,9 +1,9 @@
 @if (!authService.isLoggedIn()) {
-<button mat-icon-button (click)="login()">
+<button mat-icon-button [routerLink]="['/users/signin']" matTooltip="Signin">
   <mat-icon>perm_identity</mat-icon>
 </button>
 } @else {
-<button mat-icon-button (click)="logout()">
+<button mat-icon-button (click)="logout()" matTooltip="Signout">
   <mat-icon>perm_contact_calendar</mat-icon>
 </button>
 }

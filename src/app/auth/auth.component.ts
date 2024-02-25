@@ -4,11 +4,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from './auth.service';
 import { SharedModule } from '../shared/shared.module';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [SharedModule],
+  imports: [SharedModule, RouterLink],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
 })
@@ -17,14 +18,14 @@ export class AuthComponent implements OnDestroy {
   private subscription: Subscription | undefined;
   private snackBar = inject(MatSnackBar);
 
-  login() {
-    this.subscription = this.authService
-      .login({ username: 'Momo', password: 'MomoTest' })
-      .subscribe({
-        next: () => this.onSuccess(),
-        error: () => this.onError(),
-      });
-  }
+  // login() {
+  //   this.subscription = this.authService
+  //     .login({ username: 'Momo', password: 'MomoTest' })
+  //     .subscribe({
+  //       next: () => this.onSuccess(),
+  //       error: () => this.onError(),
+  //     });
+  // }
 
   logout() {
     this.authService.logout();

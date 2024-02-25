@@ -1,13 +1,20 @@
 <mat-toolbar class="main-header" color="primary">
-  <button mat-icon-button [routerLink]="['/']">
+  <button mat-icon-button [routerLink]="['/']" matTooltip="List Pokemon">
     <mat-icon>dashboard</mat-icon>
   </button>
-  <div class="branding">Pokedex App</div>
+  <div class="branding">{{ title }}</div>
   <span class="example-spacer"></span>
   @if (authService.isAdmin()) {
 
-  <button mat-icon-button [routerLink]="['/pokemons/new']">
+  <button
+    mat-icon-button
+    [routerLink]="['/pokemons/new']"
+    matTooltip="Add Pokemon"
+  >
     <mat-icon>add</mat-icon>
+  </button>
+  <button mat-icon-button [routerLink]="['/users']" matTooltip="List Users">
+    <mat-icon>supervised_user_circle</mat-icon>
   </button>
   }
   <app-auth></app-auth>

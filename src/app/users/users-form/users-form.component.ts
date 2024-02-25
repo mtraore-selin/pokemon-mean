@@ -4,13 +4,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IUserMongo } from '../../auth/user.interface';
 import { SharedModule } from '../../shared/shared.module';
+import { HidePasswordPipe } from '../../shared/pipes/hide-password.pipe';
 
 @Component({
   standalone: true,
-  imports: [SharedModule],
   selector: 'app-user-form',
   templateUrl: './users-form.component.html',
   styleUrls: ['./users-form.component.scss'],
+  imports: [SharedModule, HidePasswordPipe],
 })
 export class UserFormComponent {
   form: FormGroup;

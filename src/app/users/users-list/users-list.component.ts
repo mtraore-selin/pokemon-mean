@@ -6,13 +6,14 @@ import { UsersService } from '../users.service';
 import { SharedModule } from '../../shared/shared.module';
 import { UserFormComponent } from '../users-form/users-form.component';
 import { RouterLink } from '@angular/router';
+import { HidePasswordPipe } from '../../shared/pipes/hide-password.pipe';
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [SharedModule, RouterLink],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss',
+  imports: [SharedModule, RouterLink, HidePasswordPipe],
 })
 export class UsersListComponent implements OnInit {
   users: IUser[] = [];
